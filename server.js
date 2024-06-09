@@ -13,9 +13,9 @@ const server = express();
 const port = process.env.PORT;
 const dbName = "strive-blog";
 
-server.use(
+/*server.use(
     cors()
-);
+);*/
 server.use(express.json());
 
 server.use('/api/auth', authRoute)
