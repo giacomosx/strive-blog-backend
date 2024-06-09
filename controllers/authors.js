@@ -35,7 +35,8 @@ const createAuthor = (req, res, next) => {
     const userExist = AuthorModel.findOne({email})
 
     if (userExist) {
-        return res.status(400).json({message: 'User already exists'});
+        console.log(userExist)
+        return res.status(400).json({message: 'User already exists'})
     }
 
     bcrypt.hash(password, 10, async (err, hash) => {
