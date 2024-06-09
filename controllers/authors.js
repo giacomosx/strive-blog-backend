@@ -29,13 +29,12 @@ const getAuthorById = async (req, res) => {
     }
 };
 
-const createAuthor = (req, res, next) => {
+const createAuthor = async (req, res, next) => {
     const {password, email} = req.body
 
-    const userExist = AuthorModel.findOne({email})
+    const userExist = await AuthorModel.findOne({email})
 
     if (userExist) {
-        console.log(userExist)
         return res.status(400).json({message: 'User already exists'})
     }
 
