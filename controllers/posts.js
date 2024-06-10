@@ -39,6 +39,18 @@ const getPostById = async (req, res, next) => {
     }
 };
 
+
+const getPostByCategory = async (req, res, next) => {
+    const category  = req.params.category.toLowerCase();
+    try {
+        const posts = await PostModel.find({category})
+        res.status(200).json(posts);
+    } catch (e) {
+        next(e);
+    }
+}
+
+
 const createPost = async (req, res, next) => {
 
     try {
@@ -89,5 +101,5 @@ const deletePost = async (req, res, next) => {
 };
 
 module.exports = {
-    getAllPosts, getPostById, createPost, editPost, deletePost,
+    getAllPosts, getPostById, createPost, editPost, deletePost, getPostByCategory
 };

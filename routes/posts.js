@@ -7,6 +7,7 @@ const auth = require('../middlewares/tokenController')
 
 posts.route('/').get(controller.getAllPosts)
 posts.route('/:id').get(controller.getPostById)
+posts.route('/category/:category').get(controller.getPostByCategory)
 
 posts.route('/create').post(auth.verifyToken,  controller.createPost, sendEmail.newPost )
 posts.route('/upload').post( auth.verifyToken, upload.single('image'), async (req, res) => {
