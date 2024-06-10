@@ -3,6 +3,9 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
+const passport = require("passport");
+const GoogleStrategy = require('./controllers/oAuthGoogle');
+
 const authorsRoute = require("./routes/authors");
 const postsRoute = require('./routes/posts')
 const authRoute = require("./routes/authorization");
@@ -13,12 +16,11 @@ const server = express();
 const port = process.env.PORT;
 const dbName = "strive-blog";
 
-server.use(
-    cors()
-);
+server.use(cors());
 server.use(express.json());
-
 server.use('/api/auth', authRoute)
+
+passport.use('google', GoogleStrategy)
 server.use("/api/authors", authorsRoute);
 server.use('/api/blogPosts', postsRoute)
 
