@@ -21,7 +21,7 @@ authRouter.get('/callback',
 
         req.headers.authorization = 'Bearer ' + req.user.token;
 
-        res.redirect(`http://localhost:3000/me?token=${req.user.token}`)
+        res.redirect(`https://strive-blog-frontend-sepia.vercel.app/me?token=${req.user.token}`)
     });
 
 module.exports = authRouter

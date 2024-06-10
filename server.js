@@ -18,9 +18,10 @@ const dbName = "strive-blog";
 
 server.use(cors());
 server.use(express.json());
-server.use('/api/auth', authRoute)
 
 passport.use('google', GoogleStrategy)
+
+server.use('/api/auth', authRoute)
 server.use("/api/authors", authorsRoute);
 server.use('/api/blogPosts', postsRoute)
 
